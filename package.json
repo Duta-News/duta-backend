@@ -11,7 +11,7 @@
   "version": "1.0.0",
   "main": "main.ts",
   "scripts": {
-    "dev": "npx ts-node main.ts",
+    "dev": "nodemon main.ts",
     "db:generate": "npx drizzle-kit generate --dialect=postgresql --schema=schema/index.ts --out=./drizzle",
     "db:migrate": "npx ts-node migrate.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
