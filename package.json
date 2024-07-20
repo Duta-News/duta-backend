@@ -13,7 +13,7 @@
   "scripts": {
     "dev": "nodemon main.ts",
     "start": "npx ts-node main.ts",
-    "db:generate": "drizzle-kit generate --dialect=postgresql --schema=schema/index.ts --out=./drizzle",
+    "db:generate": "drizzle-kit generate --dialect=postgresql --schema=schema/index.ts --out=drizzle",
     "db:migrate": "npx ts-node migrate.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
