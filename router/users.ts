@@ -6,7 +6,7 @@ import { users } from "../schema/user";
 
 dotenv.config();
 
-const sql = neon(process.env.POSTGRES_DEV_DB_URL!);
+const sql = neon(process.env.DATABASE_URL!);
 const db = drizzle(sql);
 const router = express.Router();
 

@@ -5,7 +5,7 @@ import { config } from "dotenv";
 
 config({ path: ".env" });
 
-const sql = neon(process.env.POSTGRES_DEV_DB_URL!);
+const sql = neon(process.env.DATABASE_URL!);
 const db = drizzle(sql);
 
 const main = async () => {

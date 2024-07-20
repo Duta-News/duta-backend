@@ -8,7 +8,7 @@ import { articlesRead } from "../schema/articles-read";
 
 dotenv.config();
 
-const neonSQL = neon(process.env.POSTGRES_DEV_DB_URL!);
+const neonSQL = neon(process.env.DATABASE_URL!);
 const db = drizzle(neonSQL);
 const router = express.Router();
 
