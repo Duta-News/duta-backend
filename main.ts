@@ -1,5 +1,5 @@
-import express from "express";
-import dotenv from "dotenv";
+import * as express from "express";
+import * as dotenv from "dotenv";
 
 import articlesRouter from "./router/articles";
 import userRouter from "./router/users";

@@ -6,7 +6,8 @@ COPY package.json package.json
 COPY package-lock.json package-lock.json
 
 RUN npm install
+RUN npm install typescript -g
 
 COPY . .
 
-CMD [ "node", "main.js" ]
+CMD [ "node", "dist/main.js" ]

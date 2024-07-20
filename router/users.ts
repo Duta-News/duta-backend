@@ -1,7 +1,7 @@
-import express from "express";
+import * as express from "express";
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
-import dotenv from "dotenv";
+import * as dotenv from "dotenv";
 import { users } from "../schema/user";
 
 dotenv.config();
