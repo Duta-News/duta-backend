@@ -17,4 +17,4 @@ RUN npm run db:generate
 
 RUN tsc
 
-CMD [ "npm", "run db:migrate && npm start" ]
+CMD [ "npm run", "db:migrate && npm start" ]
