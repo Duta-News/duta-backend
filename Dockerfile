@@ -11,6 +11,8 @@ RUN npm install ts-node -g
 
 COPY . .
 
+RUN npm run db:generate
+
 RUN tsc
 
 CMD [ "node", "dist/main.js" ]
