@@ -3,8 +3,10 @@ import * as dotenv from "dotenv";
 
 import articlesRouter from "./router/articles";
 import userRouter from "./router/users";
+import { main } from "./migrate";
 
 dotenv.config();
+main();
 
 const app = express();
 
