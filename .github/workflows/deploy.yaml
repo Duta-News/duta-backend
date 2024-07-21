@@ -19,9 +19,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
       - run: npm install && npm install typescript -g && npm install ts-node -g
       - run: npm run db:generate
       - run: npm run db:migrate
       - run: curl https://api.render.com/deploy/srv-cqdls61u0jms738rsffg?key=foEtJr7_Y-U
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
