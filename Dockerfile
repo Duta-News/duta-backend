@@ -11,11 +11,12 @@ RUN npm install
 RUN npm install typescript -g
 RUN npm install ts-node -g
 
+ENV DATABASE_URL=value
+
 COPY . .
 
 RUN npm run db:generate
-RUN npm run db:migrate
 
 RUN tsc
 
-CMD [ "node", "dist/main.js" ]
+CMD [ "npm", "run db:migrate && npm start" ]
