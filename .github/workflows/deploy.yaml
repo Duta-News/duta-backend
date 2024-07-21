@@ -5,7 +5,7 @@ on:
     branches: ["develop"]
 
 env:
-  DATABASE_URL: postgresql://dutadb_owner:d8H1oxqSCseM@ep-yellow-dawn-a1rcgulp.ap-southeast-1.aws.neon.tech/dutadb?sslmode=require
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
 jobs:
   build:
