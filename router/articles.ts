@@ -1,8 +1,8 @@
-import express from "express";
+import * as express from "express";
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
 import { articles } from "../schema/article";
-import dotenv from "dotenv";
+import * as dotenv from "dotenv";
 import { eq, sql } from "drizzle-orm";
 import { articlesRead } from "../schema/articles-read";
 
@@ -45,8 +45,6 @@ router.get("/:id", async (req, res) => {
     ORDER BY a.published_at DESC
     LIMIT ${limit || 10} OFFSET ${offset || 0};
   `;
-
-  console.log(query);
 
   const result = await db.execute(sql.raw(query));
   res.json(result.rows);
