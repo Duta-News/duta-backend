@@ -5,6 +5,7 @@ import * as cors from "cors";
 import articlesRouter from "./router/articles";
 import userRouter from "./router/users";
 import { main } from "./migrate";
+import { authRouter } from "./router/auth";
 
 dotenv.config();
 main();
@@ -15,6 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/articles", articlesRouter);
 app.use("/api/users", userRouter);
+app.use("/api/auth", authRouter);
 
 app.get("/", async (req, res) => {
   res.json({ message: "Hello World" });

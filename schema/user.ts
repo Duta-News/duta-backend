@@ -1,4 +1,4 @@
-import { pgTable, text, uuid } from "drizzle-orm/pg-core";
+import { boolean, pgTable, text, uuid } from "drizzle-orm/pg-core";
 
 export const users = pgTable("users", {
   id: uuid("id").primaryKey().notNull().defaultRandom(),
@@ -8,6 +8,7 @@ export const users = pgTable("users", {
   name: text("name").notNull(),
   authenticationType: text("authentication_type").notNull(),
   authenticationId: text("authentication_id").notNull().default(""),
+  isEmailVerified: boolean("is_email_verified").notNull().default(false),
   dob: text("dob"),
   gender: text("gender"),
 });
