@@ -21,23 +21,25 @@ router.get("/all", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  const { limit, offset, language, category } = req.query;
-  const id = req.params.id;
+  try {
+    console.log("Retrieving articles for user:", req.params.id);
+    const { limit, offset, language, category } = req.query;
+    const id = req.params.id;
 
-  let whereSQL = `AND 1=1`;
+    let whereSQL = `AND 1=1`;
 
-  if (language) {
-    whereSQL += ` AND a.language = '${language}'`;
-  } else {
-    res.status(400).json({ error: "Language is required" });
-    return;
-  }
+    if (language) {
+      whereSQL += ` AND a.language = '${language}'`;
+    } else {
+      res.status(400).json({ error: "Language is required" });
+      return;
+    }
 
-  if (category) {
-    whereSQL += ` AND a.category = '${category}'`;
-  }
+    if (category) {
+      whereSQL += ` AND a.category = '${category}'`;
+    }
 
-  const query = `
+    const query = `
     SELECT a.* FROM articles a
     LEFT JOIN articles_read ar
     ON a.id = ar.article_id AND ar.user_id = '${id}'
@@ -46,8 +48,12 @@ router.get("/:id", async (req, res) => {
     LIMIT ${limit || 10} OFFSET ${offset || 0};
   `;
 
-  const result = await db.execute(sql.raw(query));
-  res.json(result.rows);
+    const result = await db.execute(sql.raw(query));
+    res.json(result.rows);
+  } catch (error) {
+    console.log("Error in articles/:id", error);
+    res.status(500).json({ message: error.message });
+  }
 });
 
 router.post("/", async (req, res) => {
@@ -63,7 +69,11 @@ router.delete("/:id", async (req, res) => {
 });
 
 router.post("/read", async (req, res) => {
-  const response = await db.insert(articlesRead).values(req.body).returning();
+  console.log(req.body);
+  const response = await db
+    .insert(articlesRead)
+    .values(req.body.articles)
+    .returning();
   res.json(response);
 });
 
